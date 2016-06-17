@@ -62,6 +62,17 @@ public struct WeChatSDK {
     }
 
     /**
+     向微信终端程序注册应用支持打开的文件类型。
+
+     需要在每次启动第三方应用程序时调用。调用后并第一次成功分享数据到微信后，会在微信的可用应用列表中出现。
+
+     - parameter typeFlag: 应用支持打开的数据类型, enAppSupportContentFlag枚举类型 “|” 操作后结果
+     */
+    public static func registerAppSupportContentFlag(typeFlag: UInt64) {
+        WXApi.registerAppSupportContentFlag(typeFlag)
+    }
+
+    /**
      打开微信
 
      - returns: 成功返回true，失败返回false
