@@ -18,8 +18,8 @@ public struct WeChatSDK {
     }
 
     /// 判断当前微信的版本是否支持OpenApi，支持为true，不支持为false
-    public static var isWeChatSupportApi: Bool {
-        return WXApi.isWXAppSupportApi()
+    public static var isWeChatSupport: Bool {
+        return WXApi.isWXAppSupport()
     }
 
     /// 微信的itunes安装地址
@@ -28,8 +28,8 @@ public struct WeChatSDK {
     }
 
     /// 当前微信SDK的版本号
-    public static var apiVersion: String {
-        return WXApi.getApiVersion()
+    public static var version: String {
+        return WXApi.getVersion()
     }
 
     /**
@@ -43,7 +43,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func registerApp(appID appID: String) -> Bool {
+    @discardableResult
+    public static func registerApp(_ appID: String) -> Bool {
         return WXApi.registerApp(appID)
     }
 
@@ -57,7 +58,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func registerApp(appID appID: String, withDescription description: String) -> Bool {
+    @discardableResult
+    public static func registerApp(_ appID: String, withDescription description: String) -> Bool {
         return WXApi.registerApp(appID, withDescription: description)
     }
 
@@ -68,7 +70,7 @@ public struct WeChatSDK {
 
      - parameter typeFlag: 应用支持打开的数据类型, enAppSupportContentFlag枚举类型 “|” 操作后结果
      */
-    public static func registerAppSupportContentFlag(typeFlag: UInt64) {
+    public static func registerAppSupportContentFlag(_ typeFlag: UInt64) {
         WXApi.registerAppSupportContentFlag(typeFlag)
     }
 
@@ -77,7 +79,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func openWeChatApp() -> Bool {
+    @discardableResult
+    public static func openWeChat() -> Bool {
         return WXApi.openWXApp()
     }
 
@@ -91,8 +94,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func handleOpenURL(url: NSURL, delegate: WXApiDelegate) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: delegate)
+    public static func handleOpen(_ url: URL, delegate: WXApiDelegate) -> Bool {
+        return WXApi.handleOpen(url, delegate: delegate)
     }
 
     /**
@@ -104,8 +107,9 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func sendReq(req: BaseReq) -> Bool {
-        return WXApi.sendReq(req)
+    @discardableResult
+    public static func send(_ req: BaseReq) -> Bool {
+        return WXApi.send(req)
     }
 
     /**
@@ -119,7 +123,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func sendAuthReq(req: SendAuthReq, viewController: UIViewController, delegate: WXApiDelegate) -> Bool {
+    @discardableResult
+    public static func sendAuthReq(_ req: SendAuthReq, viewController: UIViewController, delegate: WXApiDelegate) -> Bool {
         return WXApi.sendAuthReq(req, viewController: viewController, delegate: delegate)
     }
 
@@ -132,7 +137,8 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func sendResp(resp: BaseResp) -> Bool {
-        return WXApi.sendResp(resp)
+    @discardableResult
+    public static func send(_ resp: BaseResp) -> Bool {
+        return WXApi.send(resp)
     }
 }

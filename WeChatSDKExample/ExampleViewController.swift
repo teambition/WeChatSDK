@@ -19,27 +19,27 @@ class ExampleViewController: UITableViewController {
     }
 
     // MARK: - Helper
-    private func setupUI() {
+    fileprivate func setupUI() {
         navigationItem.title = "WeChatSDK"
         tableView.tableFooterView = UIView()
     }
 
-    private func showAlertWithTitle(title: String?, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+    fileprivate func showAlert(withTitle title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
 
         }
         alert.addAction(okAction)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension ExampleViewController {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 4
         case 1: return 3
@@ -47,7 +47,7 @@ extension ExampleViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return "Infos"
         case 1: return "Actions"
@@ -55,12 +55,12 @@ extension ExampleViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kWeChatSDKExampleCellID)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: kWeChatSDKExampleCellID)
         if cell == nil {
-            cell = UITableViewCell(style: .Value1, reuseIdentifier: kWeChatSDKExampleCellID)
+            cell = UITableViewCell(style: .value1, reuseIdentifier: kWeChatSDKExampleCellID)
         }
-        cell?.detailTextLabel?.textColor = UIColor.purpleColor()
+        cell?.detailTextLabel?.textColor = UIColor.purple
 
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
@@ -68,13 +68,13 @@ extension ExampleViewController {
             cell?.detailTextLabel?.text = "\(WeChatSDK.isWeChatInstalled)"
         case (0, 1):
             cell?.textLabel?.text = "WeChat Support Api"
-            cell?.detailTextLabel?.text = "\(WeChatSDK.isWeChatSupportApi)"
+            cell?.detailTextLabel?.text = "\(WeChatSDK.isWeChatSupport)"
         case (0, 2):
             cell?.textLabel?.text = "WeChat Install URL"
             cell?.detailTextLabel?.text = "\(WeChatSDK.weChatInstallUrl)"
         case (0, 3):
             cell?.textLabel?.text = "API Version"
-            cell?.detailTextLabel?.text = "\(WeChatSDK.apiVersion)"
+            cell?.detailTextLabel?.text = "\(WeChatSDK.version)"
         case (1, 0):
             cell?.textLabel?.text = "Open WeChat"
         case (1, 1):
@@ -88,24 +88,24 @@ extension ExampleViewController {
         return cell!
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
 
         switch (indexPath.section, indexPath.row) {
         case (0, 2):
-            if let wechatURL = NSURL(string: WeChatSDK.weChatInstallUrl) where UIApplication.sharedApplication().canOpenURL(wechatURL) {
-                UIApplication.sharedApplication().openURL(wechatURL)
+            if let wechatURL = URL(string: WeChatSDK.weChatInstallUrl), UIApplication.shared.canOpenURL(wechatURL) {
+                UIApplication.shared.openURL(wechatURL)
             }
         case (1, 0):
             if !WeChatSDK.isWeChatInstalled {
-                showAlertWithTitle("WeChat is not installed", message: nil)
-            } else if !WeChatSDK.isWeChatSupportApi {
-                showAlertWithTitle("API is not supported", message: nil)
+                showAlert(withTitle: "WeChat is not installed", message: nil)
+            } else if !WeChatSDK.isWeChatSupport {
+                showAlert(withTitle: "API is not supported", message: nil)
             } else {
-                if WeChatSDK.openWeChatApp() {
+                if WeChatSDK.openWeChat() {
                     print("Open WeChat App Successfully")
                 } else {
-                    showAlertWithTitle("Failed to open WeChat", message: nil)
+                    showAlert(withTitle: "Failed to open WeChat", message: nil)
                 }
             }
         case (1, 1):
@@ -115,16 +115,16 @@ extension ExampleViewController {
             if WeChatSDK.sendAuthReq(req, viewController: self, delegate: self) {
 
             } else {
-                showAlertWithTitle("Failed to Sign in", message: nil)
+                showAlert(withTitle: "Failed to Sign in", message: nil)
             }
         case (1, 2):
             let req = SendMessageToWXReq()
             req.bText = true
             req.text = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only."
-            if WeChatSDK.sendReq(req) {
+            if WeChatSDK.send(req) {
 
             } else {
-                showAlertWithTitle("Failed to share", message: nil)
+                showAlert(withTitle: "Failed to share", message: nil)
             }
         default:
             break
@@ -133,11 +133,11 @@ extension ExampleViewController {
 }
 
 extension ExampleViewController: WXApiDelegate {
-    func onResp(resp: BaseResp!) {
+    func onResp(_ resp: BaseResp!) {
 
     }
 
-    func onReq(req: BaseReq!) {
+    func onReq(_ req: BaseReq!) {
 
     }
 }
