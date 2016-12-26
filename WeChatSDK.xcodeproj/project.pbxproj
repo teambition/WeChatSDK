@@ -20,6 +20,7 @@
 		D358CEF31CCE359400AF0755 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D358CEF21CCE359400AF0755 /* libz.tbd */; };
 		D358CEF51CCE359E00AF0755 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D358CEF41CCE359E00AF0755 /* libc++.tbd */; };
 		D36DE76A1CCDFAEE00F69689 /* WeChatSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D36DE7691CCDFAEE00F69689 /* WeChatSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D377FA641E10B900009077FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D377FA631E10B900009077FB /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D36DE73C1CCDF86F00F69689 /* WeChatSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36DE7481CCDF93D00F69689 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "WeChatSDK/Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		D36DE7691CCDFAEE00F69689 /* WeChatSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatSDK.h; sourceTree = "<group>"; };
+		D377FA631E10B900009077FB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 				D302F7F01D139E1D00FD9321 /* Security.framework in Frameworks */,
 				D358CEEF1CCE357D00AF0755 /* SystemConfiguration.framework in Frameworks */,
 				D358CEED1CCE357600AF0755 /* CoreTelephony.framework in Frameworks */,
+				D377FA641E10B900009077FB /* CFNetwork.framework in Frameworks */,
 				D302F7EA1D1397F200FD9321 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +64,7 @@
 		D358CEF61CCE35C100AF0755 /* Required Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D377FA631E10B900009077FB /* CFNetwork.framework */,
 				D358CEEC1CCE357600AF0755 /* CoreTelephony.framework */,
 				D358CEEE1CCE357D00AF0755 /* SystemConfiguration.framework */,
 				D302F7EF1D139E1D00FD9321 /* Security.framework */,
@@ -321,6 +325,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChatSDK/lib",
 				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.WeChatSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -344,6 +352,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChatSDK/lib",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.WeChatSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
