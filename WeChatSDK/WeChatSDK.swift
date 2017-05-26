@@ -35,7 +35,7 @@ public struct WeChatSDK {
     /**
      向微信终端程序注册第三方应用
 
-     需要在每次启动第三方应用程序时调用。第一次调用后，会在微信的可用应用列表中出现。iOS7及以上系统需要调起一次微信才会出现在微信的可用应用列表中。
+     需要在每次启动第三方应用程序时调用。第一次调用后，会在微信的可用应用列表中出现，默认开启MTA数据上报。iOS7及以上系统需要调起一次微信才会出现在微信的可用应用列表中。
 
      请保证在主线程中调用此函数
 
@@ -51,16 +51,18 @@ public struct WeChatSDK {
     /**
      向微信终端程序注册第三方应用。
 
-     需要在每次启动第三方应用程序时调用。第一次调用后，会在微信的可用应用列表中出现。
+     需要在每次启动第三方应用程序时调用。第一次调用后，会在微信的可用应用列表中出现。iOS7及以上系统需要调起一次微信才会出现在微信的可用应用列表中。
+
+     请保证在主线程中调用此函数
 
      - parameter appID:       微信开发者ID
-     - parameter description: 应用附加信息，长度不超过1024字节
+     - parameter isEnableMTA: 是否支持MTA数据上报
 
      - returns: 成功返回true，失败返回false
      */
     @discardableResult
-    public static func registerApp(_ appID: String, withDescription description: String) -> Bool {
-        return WXApi.registerApp(appID, withDescription: description)
+    public static func registerApp(_ appID: String, enableMTA isEnableMTA: Bool) -> Bool {
+        return WXApi.registerApp(appID, enableMTA: isEnableMTA)
     }
 
     /**
