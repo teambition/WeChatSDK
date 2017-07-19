@@ -2,7 +2,7 @@
 Swift version of WeChat SDK.
 
 # SDK Version
-[1.7.7](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&token=&lang=zh_CN)
+[1.7.8](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319164&token=&lang=zh_CN)
 
 ## How To Get Started
 ### Carthage
@@ -14,7 +14,7 @@ github "teambition/WeChatSDK"
 ### Usage
 See [WeChatSDK Integration Guide](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=1417694084&token=&lang=zh_CN)
 
-### For iOS 9
+### For iOS 9.0+
 Add code to "Info.plist" in your project as follows:
 ```swift
 <key>LSApplicationQueriesSchemes</key>
