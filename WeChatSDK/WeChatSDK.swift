@@ -77,6 +77,41 @@ public struct WeChatSDK {
     }
 
     /**
+     接受微信的log信息（byBlock）
+
+     注意1: SDK会强引用这个block，注意不要导致内存泄漏
+
+     注意2: 调用过一次startLog by block之后，如果再调用一次任意方式的startLoad，会释放上一次logBlock，不再回调上一个logBlock
+
+     - parameter level:    打印log的级别
+     - parameter logBlock: 打印log的回调block
+     */
+    public static func startLog(by level: WXLogLevel, logBlock: @escaping WXLogBolock) {
+        WXApi.startLog(by: level, logBlock: logBlock)
+    }
+
+    /**
+     接受微信的log信息（byDelegate）
+
+     注意1: SDK会弱引用这个delegate，这里可加任意对象为代理，不需要与WXApiDelegate同一个对象
+
+     注意2: 调用过一次startLog by delegate之后，再调用一次任意方式的startLoad，不会再回调上一个logDelegate对象
+
+     - parameter level:       打印log的级别
+     - parameter logDelegate: 打印log的回调代理
+     */
+    public static func startLog(by level: WXLogLevel, logDelegate: WXApiLogDelegate) {
+        WXApi.startLog(by: level, logDelegate: logDelegate)
+    }
+
+    /**
+     停止打印log，会清理block或者delegate为空，释放block
+     */
+    public static func stopLog() {
+        WXApi.stopLog()
+    }
+
+    /**
      打开微信
 
      - returns: 成功返回true，失败返回false
