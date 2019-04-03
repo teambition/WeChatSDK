@@ -133,11 +133,11 @@ extension ExampleViewController {
 }
 
 extension ExampleViewController: WXApiDelegate {
-    func onResp(_ resp: BaseResp!) {
+    func onResp(_ resp: BaseResp) {
 
     }
 
-    func onReq(_ req: BaseReq!) {
+    func onReq(_ req: BaseReq) {
 
     }
 }

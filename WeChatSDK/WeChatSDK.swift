@@ -131,7 +131,7 @@ public struct WeChatSDK {
 
      - returns: 成功返回true，失败返回false
      */
-    public static func handleOpen(_ url: URL, delegate: WXApiDelegate) -> Bool {
+    public static func handleOpen(_ url: URL, delegate: WXApiDelegate?) -> Bool {
         return WXApi.handleOpen(url, delegate: delegate)
     }
 
@@ -161,7 +161,7 @@ public struct WeChatSDK {
      - returns: 成功返回true，失败返回false
      */
     @discardableResult
-    public static func sendAuthReq(_ req: SendAuthReq, viewController: UIViewController, delegate: WXApiDelegate) -> Bool {
+    public static func sendAuthReq(_ req: SendAuthReq, viewController: UIViewController, delegate: WXApiDelegate?) -> Bool {
         return WXApi.sendAuthReq(req, viewController: viewController, delegate: delegate)
     }
 
