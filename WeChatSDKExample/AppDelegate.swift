@@ -12,6 +12,7 @@ import WeChatSDK
 struct WeChat {
     static let appID = "Your App ID"
     static let appSecret = "Your App Secret"
+    static let universalLink = "Your App Universal Link"
 }
 
 @UIApplicationMain
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        WeChatSDK.registerApp(WeChat.appID)
+        WeChatSDK.registerApp(WeChat.appID, universalLink: WeChat.universalLink)
         return true
     }
 

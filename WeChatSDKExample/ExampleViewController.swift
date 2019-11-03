@@ -19,14 +19,14 @@ class ExampleViewController: UITableViewController {
     }
 
     // MARK: - Helper
-    fileprivate func setupUI() {
+    private func setupUI() {
         navigationItem.title = "WeChatSDK"
         tableView.tableFooterView = UIView()
     }
 
-    fileprivate func showAlert(withTitle title: String?, message: String?) {
+    private func showAlert(withTitle title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+        let okAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
 
         }
         alert.addAction(okAction)
@@ -112,19 +112,19 @@ extension ExampleViewController {
             let req = SendAuthReq()
             req.scope = "snsapi_userinfo"
             req.state = "your state code"
-            if WeChatSDK.sendAuthReq(req, viewController: self, delegate: self) {
-
-            } else {
-                showAlert(withTitle: "Failed to Sign in", message: nil)
+            WeChatSDK.sendAuthReq(req, viewController: self, delegate: self) { (success) in
+                if !success {
+                    self.showAlert(withTitle: "Failed to Sign in", message: nil)
+                }
             }
         case (1, 2):
             let req = SendMessageToWXReq()
             req.bText = true
             req.text = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only."
-            if WeChatSDK.send(req) {
-
-            } else {
-                showAlert(withTitle: "Failed to share", message: nil)
+            WeChatSDK.send(req) { (success) in
+                if !success {
+                    self.showAlert(withTitle: "Failed to share", message: nil)
+                }
             }
         default:
             break
