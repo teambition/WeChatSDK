@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C46207472372CB73005E2532 /* WeChatSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46207462372CB73005E2532 /* WeChatSDK.framework */; };
 		D36DE7211CCDF6EB00F69689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DE7201CCDF6EB00F69689 /* AppDelegate.swift */; };
 		D36DE7231CCDF6EB00F69689 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DE7221CCDF6EB00F69689 /* ExampleViewController.swift */; };
 		D36DE7261CCDF6EB00F69689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36DE7241CCDF6EB00F69689 /* Main.storyboard */; };
 		D36DE7281CCDF6EB00F69689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36DE7271CCDF6EB00F69689 /* Assets.xcassets */; };
-		D36DE76E1CCDFD2500F69689 /* WeChatSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36DE76D1CCDFD2500F69689 /* WeChatSDK.framework */; };
-		D36DE76F1CCDFD2500F69689 /* WeChatSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D36DE76D1CCDFD2500F69689 /* WeChatSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -22,7 +21,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D36DE76F1CCDFD2500F69689 /* WeChatSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,13 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C46207462372CB73005E2532 /* WeChatSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36DE71D1CCDF6EB00F69689 /* WeChatSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChatSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36DE7201CCDF6EB00F69689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36DE7221CCDF6EB00F69689 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		D36DE7251CCDF6EB00F69689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D36DE7271CCDF6EB00F69689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36DE72C1CCDF6EB00F69689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D36DE76D1CCDFD2500F69689 /* WeChatSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = WeChatSDK.framework; path = "/Users/hongxin/Library/Developer/Xcode/DerivedData/WeChatSDK-biyoiebqydwihrdburujbwoytqal/Build/Products/Debug-iphoneos/WeChatSDK.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,19 +42,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D36DE76E1CCDFD2500F69689 /* WeChatSDK.framework in Frameworks */,
+				C46207472372CB73005E2532 /* WeChatSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C46207452372CB72005E2532 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C46207462372CB73005E2532 /* WeChatSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D36DE7141CCDF6EB00F69689 = {
 			isa = PBXGroup;
 			children = (
-				D36DE76D1CCDFD2500F69689 /* WeChatSDK.framework */,
 				D36DE71F1CCDF6EB00F69689 /* WeChatSDKExample */,
 				D36DE71E1CCDF6EB00F69689 /* Products */,
+				C46207452372CB72005E2532 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

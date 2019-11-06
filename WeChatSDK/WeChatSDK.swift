@@ -159,4 +159,19 @@ public struct WeChatSDK {
     public static func sendAuthReq(_ req: SendAuthReq, viewController: UIViewController, delegate: WXApiDelegate?, completion: ((Bool) -> Void)? = nil) {
         WXApi.sendAuthReq(req, viewController: viewController, delegate: delegate, completion: completion)
     }
+    
+    /**
+     发送打开小程序的命令
+     
+     - parameter userName 用户名
+     - parameter path 小程序中的路径
+     - parameter type 小程序中的类型
+     */
+    public static func launchMiniProgram(_ userName: String, path: String?, type: WXMiniProgramType) {
+        let launchMiniProgramReq = WXLaunchMiniProgramReq.object()
+        launchMiniProgramReq.userName = userName
+        launchMiniProgramReq.path = path
+        launchMiniProgramReq.miniProgramType = type
+        WXApi.send(launchMiniProgramReq, completion: nil)
+    }
 }
