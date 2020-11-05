@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		D36DE76A1CCDFAEE00F69689 /* WeChatSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D36DE7691CCDFAEE00F69689 /* WeChatSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D396A36A236F1DD4008F4085 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A369236F1DD4008F4085 /* CoreGraphics.framework */; };
 		D396A36C236F1E42008F4085 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A36B236F1E42008F4085 /* Foundation.framework */; };
-		D396A36E236F1E4A008F4085 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A36D236F1E4A008F4085 /* UIKit.framework */; platformFilter = ios; };
+		D396A36E236F1E4A008F4085 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A36D236F1E4A008F4085 /* UIKit.framework */; };
 		D396A370236F1E88008F4085 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A36F236F1E72008F4085 /* libsqlite3.0.tbd */; };
 		D396A372236F1F52008F4085 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A371236F1F52008F4085 /* CFNetwork.framework */; };
 		D396A374236F1F63008F4085 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D396A373236F1F63008F4085 /* CoreTelephony.framework */; };
@@ -337,8 +337,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -358,11 +357,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/WeChatSDK/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChatSDK/lib",
@@ -391,11 +386,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/WeChatSDK/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WeChatSDK/lib",
